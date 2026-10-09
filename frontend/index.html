@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centrum Leniuchowania</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Hello</h1>
+  <div class="container">
+    <header>
+      <span class="badge">Poziom Lenia: Эксперт</span>
+      <h1>Oficjalny Generator Wymówek</h1>
+      <p>Idzie szef? Naciśnij przycisk i udawaj, że pracujesz!</p>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Żelazna Wymówka</h2>
+        <p id="excuse-text">Kliknij poniżej, aby otrzymać idealną wymówkę na dziś.</p>
+        <button id="excuse-btn" class="btn primary">Losuj Wymówkę</button>
+      </section>
+
+      <section class="card">
+        <h2>Przycisk Podwyżki</h2>
+        <p>Spróbuj kliknąć, żeby dostać 500% podwyżki!</p>
+        <div class="runaway-zone">
+          <button id="runaway-btn" class="btn warning">Daj Podwyżkę!</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Licznik Zmarnowanego Czasu</h2>
+        <p>Kliknięto bez sensu: <strong id="counter">0</strong> razy</p>
+        <button id="click-btn" class="btn success">Kliknij dla zasady</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Ministerство Bezrozumnych Prac. Wszystkie prawa zastrzeżone przez koty.</p>
+    </footer>
+  </div>
+
   <script src="js/app.js"></script>
 </body>
 </html>
