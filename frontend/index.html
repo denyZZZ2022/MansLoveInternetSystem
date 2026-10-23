@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Task Manager</title>
+  <title>Task Manager: tablica zadań</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700&display=swap">
@@ -17,14 +17,14 @@
   <main class="container">
     <section class="card form-panel">
       <h2>Nowe zadanie</h2>
-      <form id="task-form" novalidate>
+      <form id="task-form" class="task-form" novalidate>
         <div class="field">
           <label for="title">Tytuł</label>
           <input id="title" name="title" type="text" required maxlength="100">
         </div>
         <div class="field">
           <label for="description">Opis</label>
-          <textarea id="description" name="description" rows="3"></textarea>
+          <textarea id="description" name="description" rows="2"></textarea>
         </div>
         <div class="field">
           <label for="status">Status</label>
@@ -40,11 +40,48 @@
 
     <p id="message" class="message" role="status" aria-live="polite"></p>
 
-    <section class="list-panel">
-      <h2>Lista zadań</h2>
-      <ul id="task-list" class="task-list"></ul>
+    <section class="board" aria-label="Tablica zadań">
+      <section class="column column-new" aria-labelledby="heading-new">
+        <h2 id="heading-new">Nowe <span class="count" id="count-new">0</span></h2>
+        <ul class="column-list" id="list-new"></ul>
+      </section>
+      <section class="column column-in_progress" aria-labelledby="heading-in_progress">
+        <h2 id="heading-in_progress">W trakcie <span class="count" id="count-in_progress">0</span></h2>
+        <ul class="column-list" id="list-in_progress"></ul>
+      </section>
+      <section class="column column-done" aria-labelledby="heading-done">
+        <h2 id="heading-done">Zakończone <span class="count" id="count-done">0</span></h2>
+        <ul class="column-list" id="list-done"></ul>
+      </section>
     </section>
   </main>
+
+  <dialog id="edit-dialog" aria-labelledby="edit-heading">
+    <h2 id="edit-heading">Edytuj zadanie</h2>
+    <form id="edit-form" novalidate>
+      <div class="field">
+        <label for="edit-title">Tytuł</label>
+        <input id="edit-title" name="title" type="text" required maxlength="100">
+      </div>
+      <div class="field">
+        <label for="edit-description">Opis</label>
+        <textarea id="edit-description" name="description" rows="3"></textarea>
+      </div>
+      <div class="field">
+        <label for="edit-status">Status</label>
+        <select id="edit-status" name="status">
+          <option value="new">Nowe</option>
+          <option value="in_progress">W trakcie</option>
+          <option value="done">Zakończone</option>
+        </select>
+      </div>
+      <p id="edit-message" class="message" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+        <button type="button" class="btn" id="edit-cancel">Anuluj</button>
+      </div>
+    </form>
+  </dialog>
 
   <script src="js/app.js" defer></script>
 </body>
