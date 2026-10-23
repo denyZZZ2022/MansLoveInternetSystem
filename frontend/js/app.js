@@ -1,7 +1,7 @@
 "use strict";
 
 // Adres API (przykładowy serwer z Teams: node server.js, port 5000).
-const API_URL = "http://localhost:5000/api/tasks";
+const API_URL = "http://localhost:5113/api/tasks";
 
 const MAX_TITLE_LENGTH = 100; // tyle samo co VARCHAR(100) w bazie
 
@@ -180,10 +180,10 @@ form.addEventListener("submit", async (event) => {
   }
 
   try {
-    const created = await request(API_URL, {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
+	const created = await request(API_URL, {
+	method: "POST",
+	body: JSON.stringify({ ...data, userId: 2 }),
+	});
     form.reset();
     showMessage(message, `Dodano zadanie „${created.title}”.`);
     await loadTasks();
