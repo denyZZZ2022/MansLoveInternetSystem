@@ -6,12 +6,12 @@ INSERT INTO users (username, email, password_hash) VALUES
     ('piotr', 'piotr@example.com', 'hash-placeholder-5');
 
 INSERT INTO tasks (title, description, status, user_id) VALUES
-    ('Przygotować makietę',      'Ekran listy i formularza',            'done',        2),
-    ('Wybrać paletę kolorów',    'Cztery kolory z kodami HEX',          'done',        2),
-    ('Napisać dokumentację API', 'Opis endpointów /api/tasks',          'in_progress', 3),
-    ('Skonfigurować bazę',       'Skrypty SQL i kopia zapasowa',        'in_progress', 1),
-    ('Napisać testy',            'Testy dla endpointów',                'todo',        4),
-    ('Dodać logowanie',          'Ekran logowania i sprawdzanie hasła', 'todo',        5);
+    ('Przygotować makietę',      'Ekran listy i formularza',            'done',        (SELECT id FROM users WHERE username = 'anna')),
+    ('Wybrać paletę kolorów',    'Cztery kolory z kodami HEX',          'done',        (SELECT id FROM users WHERE username = 'anna')),
+    ('Napisać dokumentację API', 'Opis endpointów /api/tasks',          'in_progress', (SELECT id FROM users WHERE username = 'jan')),
+    ('Skonfigurować bazę',       'Skrypty SQL i kopia zapasowa',        'in_progress', (SELECT id FROM users WHERE username = 'admin')),
+    ('Napisać testy',            'Testy dla endpointów',                'todo',        (SELECT id FROM users WHERE username = 'marta')),
+    ('Dodać logowanie',          'Ekran logowania i sprawdzanie hasła', 'todo',        (SELECT id FROM users WHERE username = 'piotr'));
 
 INSERT INTO comments (content, task_id, user_id) VALUES
     ('Makieta wygląda dobrze.',               1, 3),
